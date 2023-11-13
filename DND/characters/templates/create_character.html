@@ -7,10 +7,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!--Add style-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
 </head>
 <body>
+    <header>
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">D&D Character Creator</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <main class="container mt-5">
+        <!-- Page Title -->
+        <h1>Create Character</h1>
+    
+        <!-- Character Creation Instruction -->
+        <p>Enter information and stats for your character below:</p>
+    
+        <!-- Character Info Form -->
+        <section>
+            <form id="CharacterInfo" action="/created" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Character Name">
+                </div>
+    
+                <div class="form-group">
+                    <label for="charClass">Class:</label>
+                    <input type="text" class="form-control" id="charClass" name="char_class" placeholder="Character Class">
+                </div>
+    
+                <div class="form-group">
+                    <label for="level">Level:</label>
+                    <input type="number" class="form-control" id="level" name="level" placeholder="Level">
+                </div>
+    
+                <div class="form-group">
+                    <label for="exp">EXP:</label>
+                    <input type="number" class="form-control" id="exp" name="exp" placeholder="Experience Points">
+                </div>
+    
+                <!-- Base Stats -->
+                <fieldset class="form-group">
+                    <legend>Base Stats</legend>
+                    <div class="row">
+                        <div class="col"><input type="number" class="form-control" name="str_stat" placeholder="STR"></div>
+                        <div class="col"><input type="number" class="form-control" name="dex_stat" placeholder="DEX"></div>
+                        <div class="col"><input type="number" class="form-control" name="con_stat" placeholder="CON"></div>
+                        <div class="col"><input type="number" class="form-control" name="int_stat" placeholder="INT"></div>
+                        <div class="col"><input type="number" class="form-control" name="wis_stat" placeholder="WIS"></div>
+                        <div class="col"><input type="number" class="form-control" name="cha_stat" placeholder="CHA"></div>
+                    </div>
+                </fieldset>
+    
+                <div class="form-group">
+                    <label for="background">Character Background:</label>
+                    <textarea class="form-control" id="background" name="background" rows="3"></textarea>
+                </div>
+    
+                <button type="submit" class="btn btn-primary">Create Character</button>
+            </form>
+        </section>
+    </main>
     <!--Add script-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
     <script src="{% static 'js/script.js' %}"></script> 
 </body>
 </html>
